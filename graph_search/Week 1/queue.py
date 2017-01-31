@@ -14,10 +14,8 @@ class Queue:
     def size(self):
         return len(self.items)
 
-q = Queue()
-print q
-q.enqueue(1)
-q.enqueue(2)
+    def __repr__(self):
+        return "%s" % self.items
 
-print q.dequeue()
-
+    def __str__(self):
+        return "%s" % self.items
