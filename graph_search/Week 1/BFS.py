@@ -63,7 +63,8 @@ def CC_BFS(g):
             print "cc : %s" % cc
             for i in cc.keys():
                 if cc[i]: visited[i] = 1
-            connected_components.append(cc)
+            #connected_components.append(cc)
+            connected_components.append([i[0] for i in cc.items() if i[1]>0])
     return connected_components
 
 
