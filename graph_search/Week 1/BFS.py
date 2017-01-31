@@ -21,7 +21,6 @@ def BFS(g,s):
     explored = dict(zip(nodes,[0 for i in nodes]))
     dist = dict(zip(nodes,[99999 for i in nodes]))
     dist[s] = 0
-    #if DEBUG_MODE: print nodes, edges, explored
 
     q = Queue()
     q.enqueue(s)
@@ -49,9 +48,30 @@ def BFS(g,s):
 
     return explored, dist
 
+def CC_BFS(g):
+    # finds connected components of an undirectional graph
+    nodes = g.keys()
+    visited = dict(zip(nodes, [0 for i in nodes]))
+    print nodes, "\n\n", visited, "\n\n"
+    connected_components = []
+    for n in nodes:
+        print "n :%s, visited[%s]:%s" % (n, n, visited[n])
+        if not visited[n]:
+            visited[n] = 1
+            print "visited : %s" % visited
+            cc = BFS(g,n)[0]
+            print "cc : %s" % cc
+            for i in cc.keys():
+                if cc[i]: visited[i] = 1
+            connected_components.append(cc)
+    return connected_components
 
-d = load_graph_into_dict("./smallGraph.txt")
 
-start_vertex = d.keys()[0]
-connected, distance = BFS(d, start_vertex )
-print connected, distance
+#d = load_graph_into_dict("./smallGraph.txt")
+
+# start_vertex = d.keys()[0]
+# connected, distance = BFS(d, start_vertex )
+# print connected, distance, "\n"
+
+d = load_graph_into_dict("./UnconnectedGraph.txt")
+print "CC : %s" % CC_BFS(d)
