@@ -1,6 +1,6 @@
 from queue import Queue
 
-DEBUG_MODE = False
+DEBUG_MODE = True
 
 def load_graph_into_dict(f):
     data = [line.strip().split("\t") for line in open(f, 'r')]
@@ -32,7 +32,7 @@ def BFS(g,s):
 
     while not q.isEmpty():
         v = q.dequeue()
-        if DEBUG_MODE: print "%s dequeued" % s
+        if DEBUG_MODE: print "%s dequeued" % v
         for k in g[v]:
             if DEBUG_MODE: print "%s selected" % (k,)
             if not explored[k[1]]:
