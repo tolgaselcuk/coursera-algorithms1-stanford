@@ -70,12 +70,13 @@ def DFS(g,s):
 
 
 d = load_graph_into_dict("./smallGraph2.txt")
-
 start_vertex = d.keys()[0]
 connected, route = DFS(d, start_vertex)
 print "connected", connected, "\n"
 print "route", route, "\n---------\n"
 
+d = load_graph_into_dict("./smallGraph2Labels.txt")
+start_vertex = d.keys()[0]
 connected_rec, route_rec = DFS_recursive(d, start_vertex)
 print "connected", connected_rec, "\n"
 print "recursive route", route_rec, "\n"
