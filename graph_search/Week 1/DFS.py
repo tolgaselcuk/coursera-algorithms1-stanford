@@ -15,6 +15,19 @@ def load_graph_into_dict(f):
         d[vertice] = edges
     return d
 
+def reverse_graph(g):
+    gnew = {}
+    for n in g:
+        #print n
+        for e in g[n]:
+            v = (e[1], e[0])
+            #print v
+            if gnew.has_key(e[1]):
+                gnew[e[1]].append(v)
+            else:
+                gnew[e[1]] = [v]
+            #print gnew
+    return gnew
 
 def DFS_recursive(g,s,visited=None, route=None):
     nodes = g.keys()
@@ -37,7 +50,6 @@ def DFS_recursive(g,s,visited=None, route=None):
 
 def DFS(g,s):
     nodes = g.keys()
-    #edges = [x for t in g.values() for x in t]
     visited = dict(zip(nodes,[0 for i in nodes]))
     route = []
 
@@ -69,7 +81,7 @@ def DFS(g,s):
     return visited, route
 
 def DFS_topological_order(g, s, f, current_label, visited=None, route=None):
-
+    nodes = g.keys()
     if visited == None:
         visited = dict(zip(nodes, [0 for i in nodes]))
     if route == None:
@@ -126,3 +138,6 @@ def DFS_Loop(g, current_label = None):
 
 d = load_graph_into_dict("./directedWithLabels.txt")
 print DFS_Loop(d)
+
+
+
