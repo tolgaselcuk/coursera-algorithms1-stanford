@@ -14,7 +14,7 @@ def load_graph_into_dict(f):
     return d
 
 
-
-d = load_graph_into_dict("./dijkstraData.txt")
+#d = load_graph_into_dict("./dijkstraData.txt")
+d = load_graph_into_dict("./testdata1.txt")
 print "\n\n"
 print d
