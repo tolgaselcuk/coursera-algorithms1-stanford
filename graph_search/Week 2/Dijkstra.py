@@ -35,6 +35,7 @@ def shorttest_path(g, s):
     print "len_X:%s, len_g:%s" % (len(X), len(g))
 
     while len(X) <> len(g):
+        print "====Run===="
         edges = [g[k] for k in X]
         edges2 = [x for t in edges for x in t]
         print "edges2:%s" % edges2
@@ -45,19 +46,18 @@ def shorttest_path(g, s):
                 remove_list.append(e)
         print "remove list:%s" % remove_list
         if len(remove_list):
-            #edges2.remove(remove_list)
             edges2 = [x for x in edges2 if x not in remove_list]
         print "edges2:%s" % edges2
         shortest = choose_shortest_edge(X,edges2)
         print "shortest:%s" % (shortest,)
-        X[shortest[1]] = [shortest[2], X[shortest[0]][1] + shortest[1]]
+        X[shortest[1]] = [shortest[2], X[shortest[0]][1] +shortest[1] + ', ']
         print "X:%s" % X
 
     return X
 
 
 #d = load_graph_into_dict("./dijkstraData.txt")
-d = load_graph_into_dict("./testdata1.txt")
+d = load_graph_into_dict("./testdata2.txt")
 print d, len(d)
 print "\n\n"
 
